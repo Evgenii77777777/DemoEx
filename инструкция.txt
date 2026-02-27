@@ -1,0 +1,4 @@
+1. Создайте базу данных и таблицы в PostgreSQL с помощью файла database.sql
+2. Запуск backend'а  - перейдите на папку backend и введите команды nmp install,  далее npm start
+3. Запуск frontend'а  - перейдите на папку frontend и введите команды nmp install,  далее npm start
+4. логин админа Admin26 и пароле Demo20
