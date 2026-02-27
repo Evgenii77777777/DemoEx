@@ -25,7 +25,8 @@ function App() {
     const [errors, setErrors] = useState({});
     const [message, setMessage] = useState('');
     const [currentSlide, setCurrentSlide] = useState(0);
-    
+
+    //Картинки для слайдера
     const slides = ['/images/slide1.jpg', '/images/slide2.jpg', '/images/slide3.jpg', '/images/slide4.jpg'];
     
     useEffect(() => {
@@ -64,7 +65,6 @@ useEffect(() => {
     setFilteredBookings(bookings);
 }, [bookings]);
 
-
     
     const fetchBookings = async () => {
         try {
@@ -75,7 +75,7 @@ useEffect(() => {
             const response = await fetch(url);
             const data = await response.json();
             setBookings(data);
-            setFilteredBookings(data); // Добавьте эту строку
+            setFilteredBookings(data); 
         } catch (error) {
             console.error('Error fetching bookings:', error);
         }
@@ -330,10 +330,6 @@ useEffect(() => {
     );
     
 
-
-
-
-
 const renderAdmin = () => {
     return (
         <div className="admin-panel">
@@ -464,6 +460,7 @@ const renderAdmin = () => {
                     style={{ cursor: 'pointer' }}
                 >
                     <img 
+                        //сказываем путь к логотипу
                         src="/images/logo2.png" 
                         alt="Банкетам.Нет"
                         style={{
