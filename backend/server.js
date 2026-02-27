@@ -2,13 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
-
 const app = express();
 const port = 5000;
 
 app.use(cors());
 app.use(bodyParser.json());
 
+// Подключение к БД
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
