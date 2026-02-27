@@ -464,7 +464,7 @@ const renderAdmin = () => {
                     style={{ cursor: 'pointer' }}
                 >
                     <img 
-                        src="/images/logo2.png" 
+                        src="/images/logo1.png" 
                         alt="Банкетам.Нет"
                         style={{
                             height: '50px',
