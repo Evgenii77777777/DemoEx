@@ -2,13 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
+
 const app = express();
 const port = 5000;
 
 app.use(cors());
 app.use(bodyParser.json());
 
-//Подлючение к postgres
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
@@ -131,5 +131,5 @@ app.put('/api/bookings/:id/review', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Сервер запущен на порту: ${port}`);
+    console.log(`Server running on port ${port}`);
 });
