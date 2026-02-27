@@ -447,8 +447,6 @@ const renderAdmin = () => {
     );
 };
 
-
-
     
     return (
         <div className="app">
@@ -461,6 +459,7 @@ const renderAdmin = () => {
                     style={{ cursor: 'pointer' }}
                 >
                     <img 
+                        //путь для лого
                         src="/images/logo1.png" 
                         alt="Банкетам.Нет"
                         style={{
