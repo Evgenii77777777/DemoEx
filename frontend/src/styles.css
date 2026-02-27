@@ -1,0 +1,1204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #fffdd0 0%, #fffdd0 100%);
+    min-height: 100vh;
+}
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #667eea;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.header-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.header-buttons button {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    background: #667eea;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+}
+
+.header-buttons button:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.header-buttons span {
+    color: #667eea;
+    font-weight: 500;
+}
+
+main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Слайдер */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* Формы авторизации */
+.auth-form {
+    max-width: 400px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.auth-form h2 {
+    color: #667eea;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.auth-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.auth-form input,
+.auth-form select,
+.auth-form textarea {
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.auth-form input:focus,
+.auth-form select:focus,
+.auth-form textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.auth-form button[type="submit"] {
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.auth-form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.auth-form .error {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+}
+
+.auth-form .link {
+    background: none;
+    border: none;
+    color: #667eea;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+}
+
+/* Личный кабинет */
+.profile {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.profile h2 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.profile-header button {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.profile-header button:hover {
+    transform: translateY(-2px);
+}
+
+.bookings-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.booking-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border-left: 5px solid;
+    transition: transform 0.3s;
+}
+
+.booking-card:hover {
+    transform: translateX(5px);
+}
+
+.booking-card.status-Новая {
+    border-left-color: #f1c40f;
+}
+
+.booking-card.status-Банкет назначен {
+    border-left-color: #2ecc71;
+}
+
+.booking-card.status-Банкет завершен {
+    border-left-color: #3498db;
+}
+
+.booking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.venue {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.status {
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.status-Новая .status {
+    background: #f1c40f20;
+    color: #f1c40f;
+}
+
+.status-Банкет назначен .status {
+    background: #2ecc7120;
+    color: #2ecc71;
+}
+
+.status-Банкет завершен .status {
+    background: #3498db20;
+    color: #3498db;
+}
+
+.booking-details {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.review-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+}
+
+.review-section textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    resize: vertical;
+}
+
+.review-section button {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background: #667eea;
+    color: white;
+    cursor: pointer;
+}
+
+.review {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #e8f4f8;
+    border-radius: 10px;
+    font-style: italic;
+}
+
+/* Создание заявки */
+.create-booking {
+    max-width: 500px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.create-booking h2 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+}
+
+.create-booking form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.create-booking label {
+    font-weight: 500;
+    color: #333;
+}
+
+.create-booking select,
+.create-booking input {
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.success {
+    background: #2ecc71;
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.back-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    color: #667eea;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Панель администратора */
+.admin-panel {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.admin-panel h2 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filters input,
+.filters select {
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.bookings-table {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #667eea;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 500;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tr:hover {
+    background: #f8f9fa;
+}
+
+.status-select {
+    padding: 0.3rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.status-select.status-Новая {
+    background: #f1c40f20;
+    color: #f1c40f;
+}
+
+.status-select.status-Банкет назначен {
+    background: #2ecc7120;
+    color: #2ecc71;
+}
+
+.status-select.status-Банкет завершен {
+    background: #3498db20;
+    color: #3498db;
+}
+
+.has-review {
+    font-size: 1.2rem;
+    cursor: help;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .slider {
+        height: 300px;
+    }
+    
+    .profile-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .filters {
+        flex-direction: column;
+    }
+    
+    table {
+        font-size: 0.9rem;
+    }
+    
+    th, td {
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-form,
+    .profile,
+    .create-booking,
+    .admin-panel {
+        padding: 1rem;
+    }
+    
+    .slider-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Дополнительные стили для шапки профиля */
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.user-email {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.create-booking-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem !important;
+}
+
+.create-booking-btn .btn-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.create-booking-btn:hover .btn-icon {
+    transform: rotate(90deg);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Эффектная кнопка отправки заявки */
+.create-booking button[type="submit"] {
+    position: relative;
+    padding: 1.2rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96C93D);
+    background-size: 300% 300%;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 1;
+    animation: gradientMove 5s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.create-booking button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s ease;
+    z-index: -1;
+}
+
+.create-booking button[type="submit"]:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(78, 205, 196, 0.4);
+    animation: none;
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    background-size: 200% 200%;
+}
+
+.create-booking button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+.create-booking button[type="submit"]:active {
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 0 10px 20px rgba(78, 205, 196, 0.3);
+}
+
+/* Эффект пульсации */
+.create-booking button[type="submit"]::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -2;
+}
+
+.create-booking button[type="submit"]:focus::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Иконка внутри кнопки */
+.create-booking button[type="submit"] span {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.create-booking button[type="submit"]:hover span {
+    transform: scale(1.1);
+}
+
+/* Добавление эмодзи к тексту */
+.create-booking button[type="submit"] .btn-text {
+    margin-right: 10px;
+}
+
+.create-booking button[type="submit"] .btn-icon {
+    display: inline-block;
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Альтернативный вариант с неоновым эффектом */
+.create-booking button[type="submit"].neon {
+    background: transparent;
+    border: 2px solid #4ECDC4;
+    color: #4ECDC4;
+    box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+    text-shadow: 0 0 8px rgba(78, 205, 196, 0.8);
+    transition: all 0.3s ease;
+}
+
+.create-booking button[type="submit"].neon:hover {
+    background: #4ECDC4;
+    color: white;
+    box-shadow: 0 0 40px rgba(78, 205, 196, 0.8);
+    text-shadow: none;
+}
+
+/* Вариант с 3D эффектом */
+.create-booking button[type="submit"].three-d {
+    background: #45B7D1;
+    box-shadow: 0 10px 0 #2C7A8C, 0 15px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+    transition: all 0.1s ease;
+}
+
+.create-booking button[type="submit"].three-d:hover {
+    transform: translateY(5px);
+    box-shadow: 0 5px 0 #2C7A8C, 0 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+.create-booking button[type="submit"].three-d:active {
+    transform: translateY(10px);
+    box-shadow: 0 0 0 #2C7A8C, 0 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Вариант с конфетти эффектом */
+.create-booking button[type="submit"].confetti {
+    background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+    position: relative;
+    overflow: visible;
+}
+
+.create-booking button[type="submit"].confetti::before,
+.create-booking button[type="submit"].confetti::after {
+    content: '🎉';
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.create-booking button[type="submit"].confetti::before {
+    left: 10px;
+    top: -20px;
+}
+
+.create-booking button[type="submit"].confetti::after {
+    right: 10px;
+    bottom: -20px;
+}
+
+.create-booking button[type="submit"].confetti:hover::before {
+    opacity: 1;
+    left: -10px;
+    top: -30px;
+    animation: spin 1s ease;
+}
+
+.create-booking button[type="submit"].confetti:hover::after {
+    opacity: 1;
+    right: -10px;
+    bottom: -30px;
+    animation: spin 1s ease 0.2s;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg) scale(0); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Вариант со стеклянным эффектом */
+.create-booking button[type="submit"].glass {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.create-booking button[type="submit"].glass:hover {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 45px 0 rgba(31, 38, 135, 0.5);
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .create-booking button[type="submit"] {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+    
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+}
+
+@media (max-width: 480px) {
+    .create-booking button[type="submit"] {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Статистика на панели администратора */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 1.2rem;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Кнопка сброса фильтров */
+.clear-filters {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 30px;
+    background: #e74c3c;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.clear-filters:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+.clear-filters:active {
+    transform: translateY(0);
+}
+
+/* Сообщение об отсутствии результатов */
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+    color: #666;
+}
+
+.no-results p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.no-results button {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 30px;
+    background: #667eea;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.no-results button:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+}
+
+/* Улучшенные фильтры */
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.filters input,
+.filters select {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.filters input:focus,
+.filters select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.filters input:hover,
+.filters select:hover {
+    border-color: #764ba2;
+}
+
+/* Анимация для таблицы */
+.bookings-table {
+    background: rgb(178, 221, 241);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+.bookings-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.bookings-table th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.bookings-table th:first-child {
+    border-radius: 10px 0 0 0;
+}
+
+.bookings-table th:last-child {
+    border-radius: 0 10px 0 0;
+}
+
+.bookings-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.bookings-table tr:hover td {
+    background-color: #f8f9ff;
+}
+
+.bookings-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Статусы в таблице */
+.bookings-table select {
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem top 50%;
+    background-size: 1.2rem auto;
+    transition: all 0.3s ease;
+}
+
+.bookings-table select.status-Новая {
+    background-color: #f1c40f20;
+    color: #1d1d1c;
+    border-color: #f1c40f40;
+}
+
+.bookings-table select.status-Банкет назначен {
+    background-color: #2ecc7120;
+    color: #2ecc71;
+    border-color: #2ecc7140;
+}
+
+.bookings-table select.status-Банкет завершен {
+    background-color: #3498db20;
+    color: #3498db;
+    border-color: #3498db40;
+}
+
+.bookings-table select:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.bookings-table select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filters input,
+    .filters select,
+    .filters button {
+        width: 100%;
+    }
+    
+    .bookings-table {
+        padding: 0.5rem;
+    }
+    
+    .bookings-table th,
+    .bookings-table td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .bookings-table select {
+        padding: 0.3rem 1.5rem 0.3rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Стили для логотипа */
+.logo {
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.logo img {
+    max-height: 50px;
+    width: auto;
+}
+
+/* Если изображение не загрузилось, показывается текст */
+.logo:has(img[style*="display: none"]) {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+
+    -webkit-text-fill-color: transparent;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .logo img {
+        max-height: 40px;
+    }
+    
+    .logo:has(img[style*="display: none"]) {
+        font-size: 1.4rem;
+    }
+}
